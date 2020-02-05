@@ -1,0 +1,15 @@
+#Trac側接続設定
+TRAC_USER: ariel_support
+TRAC_PASS: _9kp_qQ5KG1-
+TRAC_XMLRPC_PATH: legion.ariel-networks.com/agn/xmlrpc
+
+#@SPメール設定
+IMAP_HOST: imap.ariel-networks.com
+IMAP_USER: atsp_export
+IMAP_PASSWD: 7Hi01bJ1jCpC4rtBPA0ocRHhx2F5y5DN
+
+#giganのURLやユーザーパスの設定(@SPの対象掲示板等の読み込みに使用する)
+GIGAN_URL: https://gigan.ariel-networks.com/aae/
+GIGAN_USER: renkei
+GIGAN_PASS: aqua
+GIGAN_MASTER_APPID: 1640f8f8-2e8a-4e31-9f10-bc4288c85874
