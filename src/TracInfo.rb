@@ -7,8 +7,8 @@ class TracInfo
   TICKET_STATUS_REOPENED = "reopened"
   TICKET_STATUS_CLOSED = "closed"
 
-  TICKET_CC_CUSTOM = "sdk-qa@ariel-networks.com"
-  TICKET_CC_QA = "AAE_Support@ariel-networks.com"
+  TICKET_CC_INFRA = "arielinfra@ml.worksap.com"
+  TICKET_CC_TSET = "tset@ml.worksap.com"
   
   TICKET_CUSTOM_PRODUCT = ["Ariel/AquaDesigner・ワークフロー"] #今後増えるかもしれないので複数にしとく
   
@@ -18,8 +18,8 @@ class TracInfo
   TICKET_STATUS_DOCUMENT_REVIEWING.freeze
   TICKET_STATUS_REOPENED.freeze
   TICKET_STATUS_CLOSED.freeze
-  TICKET_CC_CUSTOM.freeze
-  TICKET_CC_QA.freeze
+  TICKET_CC_INFRA.freeze
+  TICKET_CC_TSET.freeze
   
   def initialize(spSetting, consultantList, customerList, boardNameList, wikiLinkList)
     tracUser = spSetting["TRAC_USER"]
@@ -104,13 +104,9 @@ class TracInfo
     }
     
     if /.+カスタム/x =~ product || TICKET_CUSTOM_PRODUCT.include?(product) then
-      milestone = "カスタムアプリ/QA"
-      attrs["component"] = "QA"
-      attrs["cc"] = consultantList.nil? ? TICKET_CC_CUSTOM : consultantList["consultant"].split("\r\n").push(TICKET_CC_CUSTOM).join(",")
-    else
-      milestone = "QA"
-      attrs["component"] = "QA"
-      attrs["cc"] = consultantList.nil? ? TICKET_CC_QA : consultantList["consultant"].split("\r\n").push(TICKET_CC_QA).join(",")
+      milestone = "インフラ"
+      attrs["component"] = "デフォルト"
+      attrs["cc"] = TICKET_CC_INFRA + "," + TICKET_CC_TSET
     end
     milestone = boardNameList["milestone"] unless boardNameList.nil?
     attrs["owner"] = boardNameList["owner"] unless boardNameList.nil?
